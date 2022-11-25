@@ -53,3 +53,4 @@ exit
 - By times constraints I only tested running one instance of the server, Im not sure if it's possible to run multiple instances on different ports. Also I didn't read all the grape servers documentation so...
 - Im not sure if it's right to mix `PeerRPCServer` with `PeerPub` and `PeerRPCClient` with `PeerSub` but it worked fine. Although I don't think it's the best way to do that.
 - The `mutex` implementation on the server is kind ugly but works to ensure no race conditions between different clients sending orders at same time for the same server. Again it could be an issue if running multiple servers instances.
+- I just realized that I forgot to implement the mutex on the client side and it could cause a race condition when the client is adding a new order and the server sends a message to update the orderbook.
